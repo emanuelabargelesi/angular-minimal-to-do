@@ -1,0 +1,15 @@
+<div class="flex flex-col pr-3" *ngIf="todos.length; else noTodos">
+  <div
+    class="border-l-4 border-dark_blue bg-light_blue rounded-r-md px-5 py-3 my-3"
+    [class]="{ 'bg-blue': todo.completed }"
+    *ngFor="let todo of todos"
+  >
+    <app-todo-item [todo]="todo"></app-todo-item>
+  </div>
+</div>
+<ng-template #noTodos>
+  <p class="mt-10 text-[28px]">
+    Good job! <br />
+    You completed all your task for today!
+  </p>
+</ng-template>

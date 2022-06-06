@@ -1,0 +1,43 @@
+<button class="mt-3 font-semibold text-[18px] md:text-[20px] md:float-right" (click)="toggleModal()"><span>&#43;</span> Add Task</button>
+
+<form *ngIf="modalOpened" tabindex="-1"
+  class="bg-black bg-opacity-50 h-full flex justify-center items-center fixed top-0 right-0 left-0 z-50 w-full md:inset-0">
+  <div class="relative p-4 w-full md:max-w-2xl h-full flex justify-center items-center">
+    <div class="relative bg-white rounded-lg shadow w-90">
+      <div class="flex justify-between items-center p-4 rounded-t border-b">
+        <h3 class="text-xl font-semibold">
+          Add Task
+        </h3>
+        <button
+          (click)="toggleModal()"
+          type="button"
+          class="text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="p-6 space-y-6">
+        <div class="flex flex-col">
+          <label for="description">Description</label>
+          <input class="mt-1 border border-dark_blue focus:outline-none  rounded-md px-4 py-1.5 text-sm font-medium placeholder-black/6"
+            [ngClass]="{'border-red' : formError.descError }" id="description" type="text"
+            placeholder="e.g. Wash the car" #desc />
+          <p *ngIf="formError.descError" class="text-sm text-red mb-3">{{ formError.descErrorMsg }}</p>
+        </div>
+        <div>
+          <label for="priority">Priority (1-5)</label>
+          <input class="text-center block w-[50px] mt-1 border border-dark_blue focus:outline-none rounded-md px-4 py-1.5 text-sm font-medium placeholder-black/6"
+            [ngClass]="{'border-red' : formError.priorityError }" id="priority" type="number" placeholder="1"
+            #priority />
+          <p *ngIf="formError.priorityError" class="text-sm text-red mb-3">{{ formError.priorityErrorMsg }}</p>
+        </div>
+      </div>
+      <div class="flex justify-center px-6 pb-6 rounded-b">
+        <button type="button" class="py-3 px-10 rounded-md bg-black text-white" (click)="addTodo(desc, priority)">Add</button>
+      </div>
+    </div>
+  </div>
+</form>

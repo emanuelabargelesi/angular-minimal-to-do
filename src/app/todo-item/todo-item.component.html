@@ -1,0 +1,14 @@
+<article class="flex justify-between items-end">
+  <div>
+    <p>Task: {{ todo.desc }}</p>
+    <p>Priority: {{ todo.priority }}</p>
+    <small>{{ todo.date.toLocaleDateString() }}</small>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      class=" w-[20px] h-[20px] rounded-sm bg-white accent-dark_blue checked:bg-dark_blue checked:accent-white "
+      (click)="completeToDo()"
+    >
+  </div>
+</article>
